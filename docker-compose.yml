@@ -5,6 +5,7 @@ services:
     # If you really want to use MySQL, uncomment the following line
     image: mysql:8.0.27
     command: '--default-authentication-plugin=mysql_native_password'
+    # Dockerコンテナ内でしか利用しないのでvolume
     volumes:
       - db_data:/var/lib/mysql
     restart: always
@@ -19,8 +20,11 @@ services:
       - 33060
   wordpress:
     image: wordpress:latest
+    # 開発用にホストマシンの特定ディレクトリと共有する
     volumes:
-      - wp_data:/var/www/html
+      - type: bind
+        source: "./html"
+        target: "/var/www/html"
     # 公開ポート「ホストマシンのポート番号:コンテナのポート番号」
     ports:
       - 8080:80
@@ -32,4 +36,3 @@ services:
       - WORDPRESS_DB_NAME=wordpress
 volumes:
   db_data:
-  wp_data:

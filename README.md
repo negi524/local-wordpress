@@ -1,13 +1,25 @@
 # local-wordpress
 WordPressのローカル開発環境
 
-## 起動方法
+## ディレクトリ構成
+```bash
+$ tree . -L 1
+.
+├── README.md
+├── docker-compose.yml  # Compose定義ファイル
+└── html  # コンテナ内のWordPressファイルとホストマシンを共有するためのディレクトリ
+```
+
+
+## 初回起動方法
 
 ### 1. コンテナを起動する
 
 ```bash
 docker compose up -d
 ```
+
+* `-d`：バックグラウンドで実行するオプション
 
 コンテナが起動されていればOK
 
@@ -24,4 +36,38 @@ CONTAINER ID   IMAGE              COMMAND                  CREATED       STATUS 
 
 ### 3. WordPressの初期設定を実施
 
-任意のユーザー名、パスワード、メールアドレスを持ちいてWordPressの初期設定を行う。
+任意のユーザー名、パスワード、メールアドレスを用いてWordPressの初期設定を行う。
+
+## 停止方法
+
+```bash
+docker compose stop
+```
+
+## 再起動方法
+
+```bash
+docker compose start
+```
+
+## データの削除・初期化
+
+### 1. Compose定義ファイルから作成されたコンテナやボリュームなどを削除
+
+```bash
+docker compose down --rmi all -v
+```
+
+* `--rmi all`：全てのイメージを削除
+* `-v`：Compose定義ファイルのデータボリュームを削除
+
+
+### 2. ホストマシンと共有しているファイル削除
+
+```bash
+rm -r ./html/*
+```
+
+```bash
+rm ./html/.htaccess
+```
