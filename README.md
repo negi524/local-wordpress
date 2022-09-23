@@ -71,3 +71,6 @@ rm -r ./html/*
 ```bash
 rm ./html/.htaccess
 ```
+
+## 参考
+https://docs.docker.com/samples/wordpress/
