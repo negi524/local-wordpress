@@ -72,5 +72,9 @@ rm -r ./html/*
 rm ./html/.htaccess
 ```
 
+## テストデータの用意
+
+https://github.com/jawordpressorg/theme-test-data-ja
+
 ## 参考
 https://docs.docker.com/samples/wordpress/
