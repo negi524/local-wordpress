@@ -38,6 +38,34 @@ CONTAINER ID   IMAGE              COMMAND                  CREATED       STATUS 
 
 任意のユーザー名、パスワード、メールアドレスを用いてWordPressの初期設定を行う。
 
+#### テスト用アカウント
+
+| 項目       | 値       |
+|:----------:|:--------:|
+| ユーザー名 | user1    |
+| パスワード | passw0rd |
+
+### 4. テストデータを投入する
+
+[theme-test-data-ja]を参考にテストデータを投入する。
+このツールを利用することで、様々なパターンのデータを一気に投入することができる。
+WordPressのUI上から「インポート」を選択し、テストデータのxmlをアップロードする。
+
+#### 例
+
+```bash
+curl -L "https://raw.githubusercontent.com/WPTT/theme-unit-test/master/themeunittestdata.wordpress.xml" -
+o wordpress-test-data.xml
+```
+
+### 5. WordPress REST APIが利用できるように設定する
+
+パーマリンクの設定を「基本」以外にしておけばOK。
+
+```bash
+curl -XGET "http://localhost:8080/wp-json/wp/v2/"
+```
+
 ## 停止方法
 
 ```bash
@@ -72,9 +100,44 @@ rm -r ./html/*
 rm ./html/.htaccess
 ```
 
+## デバッグ
+
+### コンテナにログイン
+
+```bash
+docker container exec -it local-wordpress-wordpress-1 /bin/bash
+```
+
+### lessコマンドのインストール
+
+```bash
+apt-get update
+```
+
+```bash
+apt-get install less -y
+```
+
+
+### Apacheの設定ファイル
+
+```bash
+ls /etc/apache2/apache2.conf
+```
+
+### ログの確認
+
+```bash
+docker logs local-wordpress-wordpress-1
+```
+
 ## テストデータの用意
 
-https://github.com/jawordpressorg/theme-test-data-ja
+[theme-test-data-ja]
+
 
 ## 参考
 https://docs.docker.com/samples/wordpress/
+
+
+[theme-test-data-ja]: https://github.com/jawordpressorg/theme-test-data-ja
