@@ -62,6 +62,10 @@ o wordpress-test-data.xml
 
 パーマリンクの設定を「基本」以外にしておけばOK。
 
+```bash
+curl -XGET "http://localhost:8080/wp-json/wp/v2/"
+```
+
 ## 停止方法
 
 ```bash
