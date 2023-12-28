@@ -47,8 +47,16 @@ CONTAINER ID   IMAGE              COMMAND                  CREATED       STATUS 
 
 ### 4. テストデータを投入する
 
-TODO
+[theme-test-data-ja]を参考にテストデータを投入する。
+このツールを利用することで、様々なパターンのデータを一気に投入することができる。
+WordPressのUI上から「インポート」を選択し、テストデータのxmlをアップロードする。
 
+#### 例
+
+```bash
+curl -L "https://raw.githubusercontent.com/WPTT/theme-unit-test/master/themeunittestdata.wordpress.xml" -
+o wordpress-test-data.xml
+```
 
 ### 5. WordPress REST APIが利用できるように設定する
 
@@ -90,7 +98,11 @@ rm ./html/.htaccess
 
 ## テストデータの用意
 
-https://github.com/jawordpressorg/theme-test-data-ja
+[theme-test-data-ja]
+
 
 ## 参考
 https://docs.docker.com/samples/wordpress/
+
+
+[theme-test-data-ja]: https://github.com/jawordpressorg/theme-test-data-ja
