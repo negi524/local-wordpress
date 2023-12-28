@@ -60,7 +60,7 @@ o wordpress-test-data.xml
 
 ### 5. WordPress REST APIが利用できるように設定する
 
-TODO
+パーマリンクの設定を「基本」以外にしておけばOK。
 
 ## 停止方法
 
@@ -94,6 +94,37 @@ rm -r ./html/*
 
 ```bash
 rm ./html/.htaccess
+```
+
+## デバッグ
+
+### コンテナにログイン
+
+```bash
+docker container exec -it local-wordpress-wordpress-1 /bin/bash
+```
+
+### lessコマンドのインストール
+
+```bash
+apt-get update
+```
+
+```bash
+apt-get install less -y
+```
+
+
+### Apacheの設定ファイル
+
+```bash
+ls /etc/apache2/apache2.conf
+```
+
+### ログの確認
+
+```bash
+docker logs local-wordpress-wordpress-1
 ```
 
 ## テストデータの用意
