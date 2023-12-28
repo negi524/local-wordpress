@@ -38,6 +38,22 @@ CONTAINER ID   IMAGE              COMMAND                  CREATED       STATUS 
 
 任意のユーザー名、パスワード、メールアドレスを用いてWordPressの初期設定を行う。
 
+#### テスト用アカウント
+
+| 項目       | 値       |
+|:----------:|:--------:|
+| ユーザー名 | user1    |
+| パスワード | passw0rd |
+
+### 4. テストデータを投入する
+
+TODO
+
+
+### 5. WordPress REST APIが利用できるように設定する
+
+TODO
+
 ## 停止方法
 
 ```bash
