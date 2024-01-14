@@ -25,3 +25,5 @@ node_modules/
 # ignore wordpress files
 html/*
 !html/.gitkeep
+
+.DS_Store
